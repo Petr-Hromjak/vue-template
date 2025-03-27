@@ -1,0 +1,40 @@
+{
+  "itemList": [
+    {
+      "id": 6,
+      "status": "Pending",
+      "total": 69.81,
+      "createdAt": "2023-01-07T00:00:00Z"
+    },
+    {
+      "id": 7,
+      "status": "Shipped",
+      "total": 148.69,
+      "createdAt": "2023-01-08T00:00:00Z"
+    },
+    {
+      "id": 8,
+      "status": "Pending",
+      "total": 101.19,
+      "createdAt": "2023-01-09T00:00:00Z"
+    },
+    {
+      "id": 9,
+      "status": "Shipped",
+      "total": 171.26,
+      "createdAt": "2023-01-10T00:00:00Z"
+    },
+    {
+      "id": 10,
+      "status": "Pending",
+      "total": 170.4,
+      "createdAt": "2023-01-11T00:00:00Z"
+    }
+  ],
+  "pagination": {
+    "page": 2,
+    "size": 12,
+    "totalPages": 3,
+    "totalItems": 12
+  }
+}
