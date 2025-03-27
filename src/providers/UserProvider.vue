@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { provide } from 'vue';
 import { useFetchHelper } from '@/composables/useFetchHelper';
-import { getUserById } from '@/api/api'; // your API function
+import { getUserById } from '@/api/api';
 import { UserContextSymbol } from '@/composables/useUserContext';
 
 const props = defineProps<{ userId: number }>();

@@ -35,7 +35,9 @@
 <script setup lang="ts">
 import { useUserOrdersContext } from '@/composables/useUserOrdersContext';
 import PaginationControls from '@/components/PaginationControls.vue';
-import FetchStateHandler from '@/components/FetchStateHandler.vue'; // You’ll need to create this
+import FetchStateHandler from '@/components/FetchStateHandler.vue';
+import type { Order } from '@/types/order';
+
 
 const { orders, status, message, pagination, page, setPage } = useUserOrdersContext();
 </script>

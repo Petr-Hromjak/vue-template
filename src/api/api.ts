@@ -1,6 +1,6 @@
-import api from '../axios-instance';
-import { MOCK } from '../config/config';
-import { OrderFormData } from '../types/form';
+import api from '@/api/axios-instance';
+import { MOCK } from '@/config/config';
+import { OrderFormData } from '@/types/form';
 
 export const getUserById = async (userId: number) => {
   if (MOCK) {

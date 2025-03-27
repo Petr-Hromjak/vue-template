@@ -13,7 +13,6 @@
 
 <script setup lang="ts">
 import {useUserContext} from '@/composables/useUserContext';
-import {computed} from "vue";
 
 const {user} = useUserContext();
 </script>

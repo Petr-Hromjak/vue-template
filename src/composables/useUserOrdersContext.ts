@@ -1,16 +1,5 @@
-// composables/useUserOrdersContext.ts
-import { inject, type Ref } from 'vue';
-import type { Order } from '@/types/order';
-import type { FetchStatus, Pagination } from '@/composables/useFetchHelper';
-
-export interface UserOrdersContext {
-    orders: Ref<Order[]>;
-    status: Ref<FetchStatus>;
-    message: Ref<string>;
-    pagination: Ref<Pagination | null>;
-    page: Ref<number>;
-    setPage: (page: number) => void;
-}
+import { inject } from 'vue';
+import {UserOrdersContext} from "@/types/context";
 
 export const UserOrdersContextSymbol = Symbol('UserOrdersContext');
 

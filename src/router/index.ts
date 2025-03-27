@@ -1,9 +1,9 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router';
 import UserPage from '@/views/UserPage.vue';
 import OrdersPage from '@/views/OrdersPage.vue';
 import CreateOrderPage from '@/views/CreateOrderPage.vue';
 
-const routes = [
+const routes: RouteRecordRaw[] = [
     {
         path: '/',
         redirect: '/users/1',
@@ -20,10 +20,6 @@ const routes = [
         path: '/users/:userId/create-order',
         component: CreateOrderPage,
     },
-    /*{
-        path: '/:pathMatch(.*)*',
-        component: () => import('@/views/NotFound.vue'), // optional 404 page
-    },*/
 ];
 
 const router = createRouter({

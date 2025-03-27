@@ -1,27 +1,19 @@
-// composables/useFetchHelper.ts
 import { ref } from 'vue';
+import {FetchMode, FetchStatus, Pagination} from "@/types/fetch";
+import {FETCH_MODE, FETCH_STATUS} from "@/constants/fetch-constants";
 
-export type FetchStatus = 'idle' | 'loading' | 'ready' | 'error' | 'no-data';
-export type FetchMode = 'single' | 'list';
-
-export interface Pagination {
-    page: number;
-    size: number;
-    totalPages: number;
-    totalItems: number;
-}
 
 export function useFetchHelper<T>() {
     const data = ref<T | T[] | null>(null);
-    const status = ref<FetchStatus>('idle');
+    const status = ref<FetchStatus>(FETCH_STATUS.IDLE);
     const message = ref<string>('');
     const pagination = ref<Pagination | null>(null);
 
     const fetchData = async (
         fetchFn: () => Promise<any>,
-        mode: FetchMode = 'single'
+        mode: FetchMode = FETCH_MODE.SINGLE
     ) => {
-        status.value = 'loading';
+        status.value = FETCH_STATUS.LOADING;
         message.value = '';
         data.value = null;
         pagination.value = null;
@@ -31,24 +23,24 @@ export function useFetchHelper<T>() {
             const root = response?.data ?? response;
 
             if (root?.error) {
-                status.value = 'error';
+                status.value = FETCH_STATUS.ERROR;
                 message.value = root.error || 'Unknown error';
                 return;
             }
 
-            if (mode === 'single') {
+            if (mode === FETCH_MODE.SINGLE) {
                 const item = root?.item;
                 if (!item || Object.keys(item).length === 0) {
-                    status.value = 'no-data';
+                    status.value = FETCH_STATUS.NO_DATA;
                     return;
                 }
                 data.value = item;
-            } else if (mode === 'list') {
+            } else if (mode === FETCH_MODE.LIST) {
                 const list = root?.itemList;
                 const pageInfo = root?.pagination;
 
                 if (!Array.isArray(list) || list.length === 0) {
-                    status.value = 'no-data';
+                    status.value = FETCH_STATUS.NO_DATA;
                     data.value = [];
                     pagination.value = pageInfo ?? null;
                     return;
@@ -58,9 +50,9 @@ export function useFetchHelper<T>() {
                 pagination.value = pageInfo ?? null;
             }
 
-            status.value = 'ready';
+            status.value = FETCH_STATUS.READY;
         } catch (err: any) {
-            status.value = 'error';
+            status.value = FETCH_STATUS.ERROR;
             message.value = err?.message || 'Unknown error';
         }
     };
